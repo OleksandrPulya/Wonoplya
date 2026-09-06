@@ -1,7 +1,3 @@
-/* =========================================
-   ОСНОВНІ НАЛАШТУВАННЯ
-   ========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -14,186 +10,140 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: #08080d;
+    background: #07070b;
     color: #ffffff;
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font-family: inherit;
-}
-
-
-/* =========================================
-   ФОНОВІ ЕФЕКТИ
-   ========================================= */
+/* =========================
+   BACKGROUND
+========================= */
 
 .background {
     position: fixed;
     inset: 0;
-    z-index: -5;
     overflow: hidden;
     pointer-events: none;
+    z-index: -2;
 }
 
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
+    filter: blur(120px);
+    opacity: .18;
 }
 
 .orb-1 {
-    width: 400px;
-    height: 400px;
-    background: #8b3dff;
-    top: -150px;
+    width: 500px;
+    height: 500px;
+    background: #8b5cf6;
+    top: -200px;
     left: -150px;
 }
 
 .orb-2 {
-    width: 350px;
-    height: 350px;
-    background: #ff3cac;
-    right: -120px;
-    top: 35%;
+    width: 450px;
+    height: 450px;
+    background: #ec4899;
+    right: -150px;
+    top: 30%;
 }
 
 .orb-3 {
-    width: 450px;
-    height: 450px;
-    background: #4c2aff;
+    width: 400px;
+    height: 400px;
+    background: #6366f1;
     bottom: -200px;
     left: 30%;
 }
 
-
-/* =========================================
-   СВІЧІННЯ ЗА КУРСОРОМ
-   ========================================= */
+/* =========================
+   CURSOR
+========================= */
 
 .cursor-glow {
     position: fixed;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        rgba(174, 93, 255, 0.14) 0%,
-        rgba(174, 93, 255, 0.06) 35%,
+        rgba(168, 85, 247, .15),
         transparent 70%
     );
-
     pointer-events: none;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 999;
 }
 
-
-/* =========================================
+/* =========================
    HEADER
-   ========================================= */
+========================= */
 
-header {
+.header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 75px;
+    z-index: 100;
+    background: rgba(7, 7, 11, .72);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.header-container {
+    max-width: 1250px;
+    height: 80px;
+    margin: auto;
+    padding: 0 25px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 6%;
-
-    background: rgba(8, 8, 13, 0.72);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    z-index: 1000;
 }
 
 .logo {
+    text-decoration: none;
+    color: white;
+    font-family: "Montserrat";
     font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 1px;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #c88aff,
-        #ff72ca
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 900;
 }
 
-nav {
+.logo span {
+    filter: drop-shadow(0 0 12px #a855f7);
+}
+
+.nav {
     display: flex;
-    align-items: center;
-    gap: 28px;
+    gap: 35px;
 }
 
-nav a {
-    position: relative;
-
-    color: rgba(255, 255, 255, 0.72);
+.nav a {
+    color: #aaa;
+    text-decoration: none;
     font-size: 14px;
-    font-weight: 600;
-
-    transition: 0.3s ease;
+    transition: .3s;
 }
 
-nav a:hover {
-    color: #ffffff;
+.nav a:hover {
+    color: #fff;
 }
 
-nav a::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        #a855f7,
-        #ec4899
-    );
-
-    transition: 0.3s ease;
+.telegram-button,
+.main-button,
+.secondary-button,
+.profile-button {
+    text-decoration: none;
 }
-
-nav a:hover::after {
-    width: 100%;
-}
-
-
-/* =========================================
-   TELEGRAM BUTTON
-   ========================================= */
 
 .telegram-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
     padding: 11px 20px;
-
     border-radius: 12px;
+
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
 
     background: linear-gradient(
         135deg,
@@ -201,135 +151,155 @@ nav a:hover::after {
         #ec4899
     );
 
-    color: #ffffff;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    box-shadow:
-        0 0 20px rgba(168, 85, 247, 0.18);
-
-    transition: 0.3s ease;
+    box-shadow: 0 0 25px rgba(168,85,247,.25);
+    transition: .3s;
 }
 
 .telegram-button:hover {
     transform: translateY(-2px);
-
-    box-shadow:
-        0 0 30px rgba(168, 85, 247, 0.35);
+    box-shadow: 0 0 35px rgba(168,85,247,.45);
 }
 
-
-/* =========================================
-   MOBILE MENU
-   ========================================= */
-
-.menu-toggle {
+.menu-button {
     display: none;
 
-    width: 42px;
-    height: 42px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-
-    background: rgba(255, 255, 255, 0.04);
-
+    border: 0;
+    background: transparent;
     color: white;
-    font-size: 20px;
-
-    cursor: pointer;
+    font-size: 25px;
 }
 
+/* =========================
+   MOBILE MENU
+========================= */
 
-/* =========================================
+.mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+
+    display: none;
+    flex-direction: column;
+
+    background: rgba(7,7,11,.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+/* =========================
    HERO
-   ========================================= */
+========================= */
 
 .hero {
-    min-height: 100vh;
+    max-width: 1250px;
+    min-height: 900px;
+    margin: auto;
+    padding: 150px 25px 100px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
     align-items: center;
-
-    padding: 140px 8% 80px;
-
-    position: relative;
+    gap: 80px;
 }
 
 .hero-content {
-    width: 55%;
+    position: relative;
+    z-index: 2;
 }
 
 .badge {
     display: inline-flex;
+    align-items: center;
+    gap: 9px;
 
-    padding: 8px 14px;
+    padding: 9px 14px;
 
-    margin-bottom: 22px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50px;
 
-    border: 1px solid rgba(183, 110, 255, 0.3);
-    border-radius: 100px;
+    background: rgba(255,255,255,.04);
 
-    background: rgba(168, 85, 247, 0.08);
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
 
-    color: #d5a7ff;
-
-    font-size: 12px;
-    font-weight: 700;
+.online-dot {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ade80;
 }
 
 .hero h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat";
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -5px;
 
-    font-size: clamp(48px, 7vw, 90px);
-    line-height: 0.95;
-
-    letter-spacing: -3px;
-
-    margin-bottom: 25px;
-}
-
-.hero h1 span {
     background: linear-gradient(
-        90deg,
-        #a855f7,
-        #ec4899
+        135deg,
+        #ffffff,
+        #d8b4fe,
+        #f9a8d4
     );
 
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    text-shadow: 0 0 70px rgba(168,85,247,.15);
 }
 
-.hero p {
-    max-width: 650px;
+.hero h1 span {
+    font-size: .5em;
+    vertical-align: middle;
+}
 
-    color: rgba(255, 255, 255, 0.62);
+.hero-subtitle {
+    max-width: 600px;
 
-    font-size: 17px;
+    margin-top: 30px;
 
-    margin-bottom: 32px;
+    color: #999;
+    font-size: 18px;
+    line-height: 1.8;
 }
 
 .hero-buttons {
     display: flex;
     gap: 15px;
+    margin-top: 40px;
     flex-wrap: wrap;
 }
 
-.primary-button,
-.secondary-button {
-    padding: 14px 23px;
+.main-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-    border-radius: 13px;
+    padding: 16px 25px;
 
-    font-size: 14px;
-    font-weight: 700;
+    color: white;
+    font-weight: 800;
 
-    transition: 0.3s ease;
-}
+    border-radius: 14px;
 
-.primary-button {
     background: linear-gradient(
         135deg,
         #8b5cf6,
@@ -337,100 +307,114 @@ nav a:hover::after {
     );
 
     box-shadow:
-        0 10px 35px rgba(168, 85, 247, 0.18);
+        0 10px 35px rgba(139,92,246,.25);
+
+    transition: .3s;
 }
 
-.primary-button:hover {
-    transform: translateY(-3px);
-
+.main-button:hover {
+    transform: translateY(-4px);
     box-shadow:
-        0 15px 45px rgba(168, 85, 247, 0.3);
+        0 15px 45px rgba(236,72,153,.35);
 }
 
 .secondary-button {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.04);
+    display: inline-flex;
+    align-items: center;
 
-    color: rgba(255, 255, 255, 0.8);
+    padding: 16px 25px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    color: #ddd;
+    background: rgba(255,255,255,.03);
+
+    transition: .3s;
 }
 
 .secondary-button:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255,255,255,.08);
 }
 
-
-/* =========================================
-   СТАТИСТИКА
-   ========================================= */
-
-.stats {
+.hero-stats {
     display: flex;
-    gap: 40px;
+    gap: 35px;
+    margin-top: 55px;
+}
 
-    margin-top: 45px;
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .stat strong {
-    display: block;
-
-    font-size: 25px;
-    font-weight: 800;
+    font-size: 22px;
 }
 
 .stat span {
-    color: rgba(255, 255, 255, 0.45);
-
+    color: #777;
     font-size: 12px;
 }
 
-
-/* =========================================
+/* =========================
    TELEGRAM PREVIEW
-   ========================================= */
+========================= */
+
+.hero-card {
+    position: relative;
+}
 
 .telegram-preview {
-    position: absolute;
+    position: relative;
 
-    right: 8%;
-    top: 50%;
+    padding: 25px;
 
-    width: 360px;
+    border-radius: 28px;
 
-    transform: translateY(-50%);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        );
 
-    padding: 22px;
-
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 25px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.1);
 
     box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.4),
-        0 0 60px rgba(168, 85, 247, 0.08);
+        0 30px 100px rgba(0,0,0,.5),
+        0 0 80px rgba(139,92,246,.12);
+
+    backdrop-filter: blur(25px);
+
+    transform: rotate(2deg);
+    transition: .5s;
 }
 
-.telegram-preview-header {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    margin-bottom: 20px;
+.telegram-preview:hover {
+    transform: rotate(0deg) translateY(-10px);
 }
 
-.telegram-avatar {
-    width: 48px;
-    height: 48px;
-
+.preview-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
 
-    border-radius: 50%;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.preview-avatar {
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 15px;
 
     background: linear-gradient(
         135deg,
@@ -438,786 +422,703 @@ nav a:hover::after {
         #ec4899
     );
 
-    font-size: 20px;
+    font-size: 23px;
 }
 
-.telegram-preview h3 {
-    font-size: 16px;
+.preview-header strong {
+    display: block;
 }
 
-.telegram-preview p {
-    color: rgba(255, 255, 255, 0.45);
-
-    font-size: 12px;
+.preview-header small {
+    color: #777;
 }
 
-
-/* =========================================
-   СЕКЦІЇ
-   ========================================= */
-
-section {
-    padding: 110px 8%;
+.preview-dots {
+    margin-left: auto;
+    color: #777;
 }
 
-.section-header {
-    max-width: 700px;
-
-    margin-bottom: 50px;
+.preview-message {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
 }
 
-.section-label {
-    color: #b56cff;
+.message-avatar {
+    width: 38px;
+    height: 38px;
 
-    font-size: 12px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-}
-
-.section-header h2 {
-    font-family: "Montserrat", sans-serif;
-
-    font-size: clamp(32px, 5vw, 55px);
-
-    line-height: 1.05;
-
-    margin-bottom: 15px;
-}
-
-.section-header p {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-
-/* =========================================
-   КАРТКИ — ОСНОВНИЙ СТИЛЬ
-   ========================================= */
-
-.about-grid,
-.admin-grid {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-
-/* =========================================
-   ЗАГАЛЬНИЙ СТИЛЬ КАРТОК
-   ========================================= */
-
-.about-card,
-.admin-card,
-.rule-card {
-    position: relative;
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
-    border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.25);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-}
-
-
-/* =========================================
-   ЛЕГЕНЬКЕ СВІТІННЯ ПІД КАРТКОЮ
-   ========================================= */
-
-.about-card::after,
-.admin-card::after,
-.rule-card::after {
-    content: "";
-
-    position: absolute;
-
-    left: 12%;
-    right: 12%;
-
-    bottom: -18px;
-
-    height: 35px;
-
-    background: rgba(168, 85, 247, 0.18);
-
-    filter: blur(22px);
+    place-items: center;
 
     border-radius: 50%;
 
-    z-index: -1;
-
-    pointer-events: none;
+    background: rgba(255,255,255,.08);
 }
 
+.message-content {
+    padding: 13px 16px;
 
-/* =========================================
-   ВНУТРІШНІЙ КОНТУР
-   ========================================= */
+    border-radius: 0 15px 15px 15px;
 
-.about-card::before,
-.admin-card::before,
-.rule-card::before {
-    content: "";
+    background: rgba(255,255,255,.06);
 
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: inherit;
-
-    border: 1px solid rgba(255, 255, 255, 0.035);
-
-    pointer-events: none;
+    max-width: 260px;
 }
 
-
-/* =========================================
-   HOVER КАРТОК
-   ========================================= */
-
-.about-card:hover,
-.admin-card:hover,
-.rule-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgba(190, 120, 255, 0.55);
-
-    background: rgba(255, 255, 255, 0.06);
-
-    box-shadow:
-        0 0 0 1px rgba(168, 85, 247, 0.08),
-        0 15px 45px rgba(0, 0, 0, 0.35),
-        0 0 35px rgba(168, 85, 247, 0.12);
+.message-content strong {
+    font-size: 12px;
+    color: #c4b5fd;
 }
 
-.about-card:hover::after,
-.admin-card:hover::after,
-.rule-card:hover::after {
-    background: rgba(168, 85, 247, 0.28);
-
-    filter: blur(25px);
-}
-
-
-/* =========================================
-   ABOUT CARD
-   ========================================= */
-
-.about-card {
-    padding: 30px;
-}
-
-.about-card-icon {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 20px;
-
-    border-radius: 15px;
-
-    background: rgba(168, 85, 247, 0.1);
-
-    border: 1px solid rgba(168, 85, 247, 0.2);
-
-    font-size: 22px;
-}
-
-.about-card h3 {
-    font-size: 19px;
-
-    margin-bottom: 10px;
-}
-
-.about-card p {
-    color: rgba(255, 255, 255, 0.55);
-
+.message-content p {
+    margin-top: 5px;
+    color: #ddd;
     font-size: 14px;
 }
 
+.message-content span {
+    display: block;
+    margin-top: 7px;
+    color: #666;
+    font-size: 10px;
+}
 
-/* =========================================
-   ADMIN CARDS
-   ========================================= */
+.floating-icon {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background: rgba(20,20,30,.8);
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    backdrop-filter: blur(15px);
+
+    font-size: 23px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,.3);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.icon-1 {
+    left: -35px;
+    top: 20%;
+}
+
+.icon-2 {
+    right: -20px;
+    top: 10%;
+    animation-delay: 1s;
+}
+
+.icon-3 {
+    right: 30px;
+    bottom: -25px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    max-width: 1150px;
+    margin: auto;
+    padding: 130px 25px;
+}
+
+.section-title {
+    max-width: 700px;
+    margin-bottom: 60px;
+}
+
+.section-label {
+    color: #a78bfa;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-family: "Montserrat";
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.05;
+}
+
+.section-title h2 span {
+    background: linear-gradient(
+        135deg,
+        #a78bfa,
+        #f472b6
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.section-title p {
+    margin-top: 20px;
+
+    color: #888;
+    line-height: 1.8;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.about-card {
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.07);
+
+    transition: .35s;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(168,85,247,.3);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3),
+        0 0 30px rgba(168,85,247,.08);
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.about-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.about-card p {
+    color: #888;
+    line-height: 1.7;
+}
+
+/* =========================
+   ADMINS
+========================= */
+
+.admins-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
 
 .admin-card {
-    padding: 28px;
+    position: relative;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    transition: .35s;
+}
+
+.admin-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(168,85,247,.3);
+}
+
+.admin-card.owner {
+    border-color: rgba(236,72,153,.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(236,72,153,.08),
+            rgba(139,92,246,.04)
+        );
+}
+
+.admin-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .admin-avatar {
     width: 65px;
     height: 65px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
-    margin-bottom: 18px;
-
-    border-radius: 50%;
+    border-radius: 20px;
 
     background: linear-gradient(
         135deg,
         #8b5cf6,
-        #ec4899
+        #6366f1
     );
 
-    font-size: 25px;
+    font-size: 24px;
+    font-weight: 900;
 
     box-shadow:
-        0 0 25px rgba(168, 85, 247, 0.18);
+        0 10px 30px rgba(99,102,241,.25);
+}
+
+.owner-avatar {
+    background: linear-gradient(
+        135deg,
+        #ec4899,
+        #8b5cf6
+    );
+}
+
+.admin-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #999;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.admin-status span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: #4ade80;
+
+    box-shadow: 0 0 10px #4ade80;
 }
 
 .admin-card h3 {
-    font-size: 20px;
-
-    margin-bottom: 4px;
+    margin-top: 25px;
+    font-size: 25px;
 }
 
-.admin-role {
-    color: #bd82ff;
+.callsign {
+    margin-top: 7px;
+}
 
+.callsign span {
+    color: #666;
     font-size: 12px;
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 18px;
 }
 
-.admin-info {
+.callsign strong {
+    color: #c4b5fd;
+    margin-left: 5px;
+}
+
+.admin-description {
+    color: #888;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.admin-tags {
     display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-
-    margin-bottom: 20px;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-.admin-info span {
-    color: rgba(255, 255, 255, 0.5);
+.admin-tags span {
+    padding: 7px 10px;
 
-    font-size: 13px;
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.05);
+
+    color: #aaa;
+    font-size: 11px;
 }
 
-.admin-info strong {
-    color: rgba(255, 255, 255, 0.9);
-}
+.profile-button {
+    display: inline-block;
 
+    margin-top: 20px;
 
-/* =========================================
-   ADMIN TELEGRAM LINK
-   ========================================= */
-
-.admin-telegram {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 9px 13px;
-
-    border: 1px solid rgba(168, 85, 247, 0.25);
+    padding: 11px 15px;
 
     border-radius: 10px;
 
-    background: rgba(168, 85, 247, 0.07);
+    background: rgba(139,92,246,.12);
 
-    color: #d4a5ff;
+    color: #c4b5fd;
 
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
 
-    transition: 0.3s ease;
+    transition: .3s;
 }
 
-.admin-telegram:hover {
-    border-color: rgba(168, 85, 247, 0.55);
-
-    background: rgba(168, 85, 247, 0.13);
-
-    box-shadow:
-        0 0 20px rgba(168, 85, 247, 0.12);
+.profile-button:hover {
+    background: rgba(139,92,246,.25);
+    transform: translateX(4px);
 }
 
+.no-tag {
+    margin-top: 20px;
+    color: #666;
+    font-size: 12px;
+}
 
-/* =========================================
+/* =========================
    RULES
-   ========================================= */
+========================= */
 
 .rules-container {
     display: flex;
     flex-direction: column;
-
-    gap: 14px;
+    gap: 12px;
 }
 
-.rule-card {
+.rule-block {
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(255,255,255,.07);
+
     overflow: hidden;
+
+    transition: .3s;
 }
 
-.rule-card summary {
+.rule-block[open] {
+    border-color: rgba(168,85,247,.25);
+}
+
+.rule-block summary {
+    list-style: none;
+    cursor: pointer;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 18px;
 
     padding: 22px 25px;
 
-    cursor: pointer;
-
-    list-style: none;
-
     font-weight: 700;
-    font-size: 15px;
 }
 
-.rule-card summary::-webkit-details-marker {
+.rule-block summary::-webkit-details-marker {
     display: none;
 }
 
-.rule-card summary::after {
-    content: "+";
+.rule-number {
+    min-width: 38px;
+    height: 38px;
 
-    color: #bd82ff;
+    display: grid;
+    place-items: center;
 
-    font-size: 22px;
+    border-radius: 10px;
 
-    transition: transform 0.3s ease;
-}
+    background: rgba(139,92,246,.12);
 
-.rule-card[open] summary::after {
-    transform: rotate(45deg);
-}
-
-.rule-content {
-    padding: 0 25px 25px;
-
-    color: rgba(255, 255, 255, 0.57);
-
-    font-size: 14px;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.rule-content p {
-    margin-top: 18px;
-}
-
-.rule-content ul {
-    padding-left: 20px;
-
-    margin-top: 15px;
-}
-
-.rule-content li {
-    margin-bottom: 8px;
-}
-
-
-/* =========================================
-   CTA
-   ========================================= */
-
-.cta {
-    text-align: center;
-
-    padding: 120px 8%;
-}
-
-.cta-box {
-    position: relative;
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 70px 30px;
-
-    border: 1px solid rgba(168, 85, 247, 0.2);
-
-    border-radius: 30px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(168, 85, 247, 0.12),
-            transparent 65%
-        ),
-        rgba(255, 255, 255, 0.035);
-
-    overflow: hidden;
-}
-
-.cta-box h2 {
-    font-family: "Montserrat", sans-serif;
-
-    font-size: clamp(30px, 5vw, 55px);
-
-    margin-bottom: 15px;
-}
-
-.cta-box p {
-    color: rgba(255, 255, 255, 0.55);
-
-    margin-bottom: 28px;
-}
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
-footer {
-    padding: 30px 8%;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-
-    text-align: center;
-
-    color: rgba(255, 255, 255, 0.35);
+    color: #a78bfa;
 
     font-size: 12px;
 }
 
+.rule-block summary b {
+    margin-left: auto;
 
-/* =========================================
-   SCROLL ANIMATION
-   ========================================= */
+    color: #777;
+    font-size: 24px;
 
-.reveal {
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+    transition: .3s;
 }
 
-.reveal.active {
-    opacity: 1;
-
-    transform: translateY(0);
+.rule-block[open] summary b {
+    transform: rotate(45deg);
+    color: #c4b5fd;
 }
 
+.rule-content {
+    padding: 0 25px 25px 81px;
 
-/* =========================================
-   АДАПТАЦІЯ ДЛЯ ПЛАНШЕТІВ
-   ========================================= */
+    color: #999;
+    line-height: 1.7;
+}
 
-@media (max-width: 1000px) {
+.rule-content p {
+    padding: 10px 0;
 
-    .hero-content {
-        width: 100%;
-    }
+    border-bottom: 1px solid rgba(255,255,255,.035);
+}
 
-    .telegram-preview {
+.rule-content p:last-child {
+    border-bottom: none;
+}
+
+.rule-block.danger {
+    border-color: rgba(239,68,68,.15);
+}
+
+.rule-block.danger .rule-number {
+    background: rgba(239,68,68,.1);
+    color: #f87171;
+}
+
+.final-rule {
+    color: #e9d5ff !important;
+    font-weight: 700;
+}
+
+/* =========================
+   JOIN
+========================= */
+
+.join-section {
+    max-width: 1100px;
+    margin: 80px auto 130px;
+
+    padding: 100px 30px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(139,92,246,.18),
+            transparent 65%
+        ),
+
+        rgba(255,255,255,.035);
+
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.join-content > span {
+    font-size: 40px;
+}
+
+.join-content h2 {
+    margin-top: 20px;
+
+    font-family: "Montserrat";
+    font-size: clamp(35px, 6vw, 60px);
+}
+
+.join-content h2 strong {
+    background: linear-gradient(
+        135deg,
+        #a78bfa,
+        #f472b6
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.join-content p {
+    max-width: 550px;
+    margin: 20px auto 35px;
+
+    color: #888;
+    line-height: 1.7;
+}
+
+.large {
+    padding: 17px 30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 60px 25px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+    color: #666;
+}
+
+.footer-logo {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 22px;
+    font-weight: 900;
+}
+
+footer p {
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+.footer-line {
+    max-width: 250px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: rgba(255,255,255,.08);
+}
+
+footer small {
+    font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .nav,
+    .telegram-button {
         display: none;
     }
 
-    .about-grid,
-    .admin-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* =========================================
-   МОБІЛЬНА ВЕРСІЯ
-   ========================================= */
-
-@media (max-width: 768px) {
-
-    /* HEADER */
-
-    header {
-        height: 65px;
-
-        padding: 0 5%;
-    }
-
-    nav {
-        display: none;
-
-        position: absolute;
-
-        top: 65px;
-        left: 5%;
-        right: 5%;
-
-        flex-direction: column;
-
-        gap: 0;
-
-        padding: 10px;
-
-        border: 1px solid rgba(255, 255, 255, 0.15);
-
-        border-radius: 16px;
-
-        background: rgba(10, 10, 16, 0.96);
-
-        backdrop-filter: blur(20px);
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav a {
-        width: 100%;
-
-        padding: 13px 12px;
-    }
-
-    header > .telegram-button {
-        display: none;
-    }
-
-    .menu-toggle {
+    .menu-button {
         display: block;
     }
 
-
-    /* HERO */
-
     .hero {
-        min-height: auto;
-
-        padding:
-            125px 5%
-            80px;
-    }
-
-    .hero h1 {
-        font-size: clamp(42px, 14vw, 65px);
-
-        letter-spacing: -2px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .stats {
-        gap: 20px;
-
-        flex-wrap: wrap;
-    }
-
-    .stat strong {
-        font-size: 21px;
-    }
-
-
-    /* SECTIONS */
-
-    section {
-        padding:
-            80px 5%;
-    }
-
-    .section-header {
-        margin-bottom: 32px;
-    }
-
-
-    /* КАРТКИ */
-
-    .about-grid,
-    .admin-grid {
         grid-template-columns: 1fr;
-
-        gap: 18px;
+        gap: 70px;
+        min-height: auto;
     }
 
-
-    /*
-       НА ТЕЛЕФОНІ РОБИМО КОНТУР
-       ЗНАЧНО ЧІТКІШИМ
-    */
-
-    .about-card,
-    .admin-card,
-    .rule-card {
-
-        border: 1.5px solid rgba(255, 255, 255, 0.25);
-
-        background: rgba(15, 15, 23, 0.82);
-
-        border-radius: 18px;
-
-        box-shadow:
-            0 0 0 1px rgba(255, 255, 255, 0.025),
-            0 8px 28px rgba(0, 0, 0, 0.42),
-            0 12px 25px rgba(168, 85, 247, 0.06);
+    .hero-card {
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
     }
 
-
-    /*
-       ПОМІТНИЙ, АЛЕ ЛЕГКИЙ КОНТУР
-    */
-
-    .about-card::before,
-    .admin-card::before,
-    .rule-card::before {
-
-        border: 1px solid rgba(190, 120, 255, 0.16);
+    .about-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /*
-       СВІТІННЯ ПІД КАРТКОЮ
-    */
-
-    .about-card::after,
-    .admin-card::after,
-    .rule-card::after {
-
-        left: 15%;
-        right: 15%;
-
-        bottom: -16px;
-
-        height: 28px;
-
-        background:
-            rgba(168, 85, 247, 0.20);
-
-        filter: blur(20px);
+    .admins-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /*
-       ПРИ НАТИСКАННІ НА КАРТКУ
-    */
-
-    .about-card:active,
-    .admin-card:active,
-    .rule-card:active {
-
-        border-color:
-            rgba(200, 135, 255, 0.65);
-
-        background:
-            rgba(20, 18, 30, 0.9);
-
-        box-shadow:
-            0 0 0 1px rgba(168, 85, 247, 0.12),
-            0 8px 30px rgba(0, 0, 0, 0.45),
-            0 0 25px rgba(168, 85, 247, 0.14);
-
-        transform: scale(0.985);
-    }
-
-
-    /* ABOUT */
-
-    .about-card {
-        padding: 25px;
-    }
-
-
-    /* ADMIN */
-
-    .admin-card {
-        padding: 25px;
-    }
-
-
-    /* RULES */
-
-    .rule-card summary {
-        padding: 19px 18px;
-
-        font-size: 14px;
-    }
-
-    .rule-content {
-        padding:
-            0 18px 20px;
-
-        font-size: 13px;
-    }
-
-
-    /* CTA */
-
-    .cta {
-        padding:
-            80px 5%;
-    }
-
-    .cta-box {
-        padding:
-            50px 20px;
-
-        border-radius: 23px;
-    }
-
-
-    /* CURSOR */
-
-    /*
-       На телефоні курсор не потрібен,
-       тому вимикаємо його.
-    */
-
-    .cursor-glow {
-        display: none;
-    }
 }
 
+@media (max-width: 600px) {
 
-/* =========================================
-   ДУЖЕ МАЛЕНЬКІ ЕКРАНИ
-   ========================================= */
+    .header-container {
+        height: 70px;
+    }
 
-@media (max-width: 400px) {
+    .mobile-menu {
+        top: 70px;
+    }
 
-    .logo {
-        font-size: 19px;
+    .hero {
+        padding-top: 120px;
     }
 
     .hero h1 {
-        font-size: 39px;
+        font-size: 54px;
+        letter-spacing: -3px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
     }
 
     .hero-buttons {
         flex-direction: column;
     }
 
-    .primary-button,
+    .main-button,
     .secondary-button {
         width: 100%;
-
-        text-align: center;
     }
 
-    .stats {
-        gap: 15px;
+    .hero-stats {
+        gap: 20px;
+        justify-content: space-between;
     }
 
-    .stat {
-        min-width: 80px;
+    .telegram-preview {
+        padding: 18px;
     }
+
+    .floating-icon {
+        display: none;
+    }
+
+    .section {
+        padding: 90px 18px;
+    }
+
+    .section-title h2 {
+        font-size: 40px;
+    }
+
+    .admin-card {
+        padding: 23px;
+    }
+
+    .rule-block summary {
+        padding: 18px;
+        font-size: 14px;
+    }
+
+    .rule-content {
+        padding: 0 18px 20px 18px;
+        font-size: 14px;
+    }
+
+    .rule-number {
+        min-width: 32px;
+        height: 32px;
+    }
+
+    .join-section {
+        margin: 40px 15px 80px;
+        padding: 70px 20px;
+    }
+
 }
