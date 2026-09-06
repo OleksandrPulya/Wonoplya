@@ -706,17 +706,32 @@ body {
 .admin-avatar img {
     width: 100%;
     height: 100%;
+    display: block;
 
     object-fit: cover;
-    display: block;
+    object-position: center;
+
+    opacity: 1 !important;
+    filter: none !important;
+
+    mix-blend-mode: normal !important;
+    background: transparent !important;
+
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .owner-avatar {
-    background: linear-gradient(
-        135deg,
-        #ec4899,
-        #8b5cf6
-    );
+    background: #111 !important;
+    overflow: hidden;
+}
+
+.owner-avatar img {
+    opacity: 1 !important;
+    filter: none !important;
 }
 
 .admin-status {
