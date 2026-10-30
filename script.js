@@ -199,3 +199,51 @@ document.querySelectorAll(".rule-block").forEach(block => {
     });
 
 });
+
+// ================================
+// ACTIVE NAV LINK (підсвітка розділу)
+// ================================
+
+const navLinks = document.querySelectorAll(".nav a, .mobile-menu a[href^='#']");
+
+const spy = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            navLinks.forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + entry.target.id
+                );
+            });
+
+        });
+
+    },
+    {
+        // "лінія спрацювання" посередині екрана
+        rootMargin: "-45% 0px -50% 0px"
+    }
+);
+
+["about", "admins", "rules"].forEach(id => {
+    const section = document.getElementById(id);
+    if (section) spy.observe(section);
+});
+
+// на самому верху сайту підсвітка знімається
+const home = document.getElementById("home");
+
+if (home) {
+    new IntersectionObserver(
+        (entries) => {
+            if (entries[0].isIntersecting) {
+                navLinks.forEach(link => link.classList.remove("active"));
+            }
+        },
+        { rootMargin: "-45% 0px -50% 0px" }
+    ).observe(home);
+}
