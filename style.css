@@ -1479,3 +1479,53 @@ footer small {
             0 0 56px rgba(var(--glow-rgb), .42);
     }
 }
+
+/* =========================
+   PURPLE OUTLINE: JOIN BLOCK
+========================= */
+
+.join-section {
+    border: 1.5px solid var(--purple);
+    box-shadow:
+        0 0 0 4px rgba(var(--glow-rgb), .07),
+        0 0 30px rgba(var(--glow-rgb), .22);
+    transition: border-color .35s, box-shadow .35s;
+}
+
+.join-section:hover {
+    border-color: var(--purple-light);
+    box-shadow:
+        0 0 0 5px rgba(var(--glow-rgb), .12),
+        0 0 46px rgba(var(--glow-rgb), .34);
+}
+
+/* анімація появи при скролі: спершу прихований, потім контур спалахує */
+.join-section.reveal:not(.visible) {
+    opacity: 0;
+}
+
+.join-section.visible {
+    animation: joinIn 1.1s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+
+@keyframes joinIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.96);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: var(--purple-light);
+        box-shadow:
+            0 0 0 8px rgba(var(--glow-rgb), .08),
+            0 0 60px rgba(var(--glow-rgb), .42);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .join-section.visible {
+        animation: none;
+    }
+}
