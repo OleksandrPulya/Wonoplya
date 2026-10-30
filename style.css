@@ -1363,3 +1363,119 @@ footer small {
         animation: none;
     }
 }
+
+/* =========================
+   DARKER GLOW (override)
+========================= */
+
+:root {
+    --purple: #8b5cf6;                      /* контур трохи темніший */
+    --glow-rgb: 109, 40, 217;               /* колір свічіння (глибокий фіолетовий) */
+    --glow-soft: .22;                       /* сила свічіння: менше = темніше */
+    --glow-strong: .38;                     /* сила на hover і в анімації */
+    --purple-light: #c4b5fd;                /* яскравий контур на hover */
+}
+
+/* --- кнопки --- */
+.telegram-button,
+.main-button,
+.secondary-button,
+.profile-button,
+.menu-button {
+    box-shadow:
+        0 0 0 4px rgba(var(--glow-rgb), .1),
+        0 0 16px rgba(var(--glow-rgb), var(--glow-soft));
+}
+
+.telegram-button:hover,
+.main-button:hover,
+.secondary-button:hover,
+.profile-button:hover,
+.menu-button:hover {
+    border-color: var(--purple-light);
+    box-shadow:
+        0 0 0 5px rgba(var(--glow-rgb), .16),
+        0 0 28px rgba(var(--glow-rgb), var(--glow-strong));
+}
+
+/* --- картки, бейдж, правила --- */
+.badge,
+.about-card,
+.rule-block,
+.rule-block.danger {
+    box-shadow:
+        0 0 0 4px rgba(var(--glow-rgb), .07),
+        0 0 16px rgba(var(--glow-rgb), .2);
+}
+
+.telegram-preview {
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, .5),
+        0 0 0 4px rgba(var(--glow-rgb), .07),
+        0 0 34px rgba(var(--glow-rgb), .22);
+}
+
+.about-card:hover,
+.rule-block:hover {
+    border-color: var(--purple-light);
+    box-shadow:
+        0 0 0 5px rgba(var(--glow-rgb), .12),
+        0 0 28px rgba(var(--glow-rgb), .34);
+}
+
+.rule-block[open],
+.rule-block.danger[open] {
+    border-color: var(--purple-light);
+}
+
+
+/* --- анімації появи (ті самі назви, нові кольори) --- */
+@keyframes buttonIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.9);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.03);
+        border-color: var(--purple-light);
+        box-shadow:
+            0 0 0 8px rgba(var(--glow-rgb), .08),
+            0 0 36px rgba(var(--glow-rgb), .45);
+    }
+}
+
+@keyframes outlineIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: var(--purple-light);
+        box-shadow:
+            0 0 0 8px rgba(var(--glow-rgb), .08),
+            0 0 40px rgba(var(--glow-rgb), .42);
+    }
+}
+
+@keyframes previewIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotate(2deg) scale(.94);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: var(--purple-light);
+        box-shadow:
+            0 30px 100px rgba(0, 0, 0, .5),
+            0 0 0 10px rgba(var(--glow-rgb), .08),
+            0 0 56px rgba(var(--glow-rgb), .42);
+    }
+}
