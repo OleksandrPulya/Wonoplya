@@ -1717,3 +1717,164 @@ footer small {
         animation: none;
     }
 }
+
+/* =========================
+   MOBILE: ЛОГО + БУРГЕР
+========================= */
+
+/* лінії бургера (для десктопу кнопка прихована) */
+.menu-button {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0;
+    transition: .4s;
+}
+
+.burger-line {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    margin-left: -10px;
+    border-radius: 2px;
+    background: #fff;
+
+    transition:
+        transform .5s cubic-bezier(.22, 1, .36, 1),
+        opacity .3s ease,
+        top .5s cubic-bezier(.22, 1, .36, 1),
+        background .3s;
+}
+
+.burger-line:nth-child(1) { top: 14px; }
+.burger-line:nth-child(2) { top: 21px; }
+.burger-line:nth-child(3) { top: 28px; }
+
+/* стан "відкрито": хрестик */
+.menu-button.open {
+    border-color: var(--purple-light);
+    background: rgba(var(--glow-rgb), .2);
+}
+
+.menu-button.open .burger-line:nth-child(1) {
+    top: 21px;
+    transform: rotate(45deg);
+}
+
+.menu-button.open .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-button.open .burger-line:nth-child(3) {
+    top: 21px;
+    transform: rotate(-45deg);
+}
+
+
+@media (max-width: 900px) {
+
+    .menu-button {
+        display: block;
+    }
+
+    /* меню завжди в DOM, але приховане: так працює плавна анімація */
+    .mobile-menu {
+        display: flex;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-14px);
+
+        transition:
+            opacity .45s ease,
+            transform .55s cubic-bezier(.22, 1, .36, 1),
+            visibility 0s linear .55s;
+    }
+
+    .mobile-menu.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+
+        transition:
+            opacity .45s ease,
+            transform .55s cubic-bezier(.22, 1, .36, 1),
+            visibility 0s;
+    }
+
+    /* пункти меню з'являються по черзі */
+    .mobile-menu a {
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+            opacity .4s ease,
+            transform .5s cubic-bezier(.22, 1, .36, 1),
+            background .3s;
+    }
+
+    .mobile-menu.active a {
+        opacity: 1;
+        transform: none;
+    }
+
+    .mobile-menu.active a:nth-child(1) { transition-delay: .08s; }
+    .mobile-menu.active a:nth-child(2) { transition-delay: .16s; }
+    .mobile-menu.active a:nth-child(3) { transition-delay: .24s; }
+    .mobile-menu.active a:nth-child(4) { transition-delay: .32s; }
+
+}
+
+
+@media (max-width: 600px) {
+
+    /* менший логотип */
+    .logo {
+        font-size: 17px;
+    }
+
+    .header-container {
+        padding: 0 18px;
+    }
+
+    .menu-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .burger-line:nth-child(1) { top: 12px; }
+    .burger-line:nth-child(2) { top: 19px; }
+    .burger-line:nth-child(3) { top: 26px; }
+
+    .menu-button.open .burger-line:nth-child(1),
+    .menu-button.open .burger-line:nth-child(3) {
+        top: 19px;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .logo {
+        font-size: 15px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .burger-line,
+    .mobile-menu,
+    .mobile-menu a {
+        transition: none;
+    }
+
+}
