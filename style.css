@@ -2057,3 +2057,97 @@ footer small {
         padding: 6px 16px;
     }
 }
+
+/* =========================
+   СТРІЧКИ ДЛЯ ВСІХ + ПРИБРАТИ ФОН ГОЛОВНОГО АДМІНА
+========================= */
+
+/* ---------- прибираємо оранжевий фон ---------- */
+
+.admin-card.head-admin {
+    background: rgba(255, 255, 255, .035) !important;
+    border: 1.5px solid rgba(245, 158, 11, .55);
+    box-shadow:
+        0 0 0 3px rgba(245, 158, 11, .06),
+        0 0 18px rgba(245, 158, 11, .14);
+}
+
+.admin-card.head-admin:hover {
+    background: rgba(255, 255, 255, .05) !important;
+    border-color: #fbbf24;
+}
+
+/* ---------- спільний вигляд стрічок ---------- */
+
+.owner-ribbon,
+.head-ribbon,
+.admin-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 0 0 14px 14px;
+
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* відступ, щоб стрічка не налазила на аватар */
+.owner-ribbon + .admin-top,
+.head-ribbon + .admin-top,
+.admin-ribbon + .admin-top {
+    margin-top: 16px;
+}
+
+/* ---------- ВЛАСНИК: найбільша, рожево-фіолетова ---------- */
+
+.owner-ribbon {
+    padding: 7px 24px;
+    font-size: 12px;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    color: #fff;
+}
+
+/* ---------- ГОЛОВНИЙ АДМІН: середня, золота ---------- */
+
+.head-ribbon {
+    padding: 6px 20px;
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #1c1305;
+    box-shadow: none;
+}
+
+/* ---------- АДМІН: менша, фіолетова ---------- */
+
+.admin-ribbon {
+    padding: 5px 18px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+
+    .owner-ribbon {
+        padding: 6px 18px;
+        font-size: 11px;
+    }
+
+    .head-ribbon {
+        padding: 5px 14px;
+        font-size: 10px;
+        letter-spacing: 1.2px;
+    }
+
+    .admin-ribbon {
+        padding: 5px 14px;
+        font-size: 9px;
+    }
+
+}
