@@ -116,3 +116,86 @@ if (telegramPreview) {
     });
 
 }
+
+// ================================
+// SLOW RULES ACCORDION
+// ================================
+
+const RULE_DURATION = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? 0
+    : 800; // мс — збільш, якщо хочеш ще повільніше
+
+document.querySelectorAll(".rule-block").forEach(block => {
+
+    const summary = block.querySelector("summary");
+    const content = block.querySelector(".rule-content");
+
+    let heightAnim = null;
+    let fadeAnim = null;
+    let closing = false;
+
+    function run(startH, endH, opacityFrom, opacityTo, onDone) {
+
+        if (heightAnim) heightAnim.cancel();
+        if (fadeAnim) fadeAnim.cancel();
+
+        const easing = "cubic-bezier(.22, 1, .36, 1)";
+
+        heightAnim = block.animate(
+            { height: [startH + "px", endH + "px"] },
+            { duration: RULE_DURATION, easing }
+        );
+
+        fadeAnim = content.animate(
+            { opacity: [opacityFrom, opacityTo] },
+            { duration: RULE_DURATION, easing }
+        );
+
+        heightAnim.onfinish = () => {
+            heightAnim = null;
+            fadeAnim = null;
+            onDone();
+        };
+    }
+
+    summary.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        block.style.overflow = "hidden";
+
+        const startH = block.offsetHeight;
+
+        if (block.open && !closing) {
+
+            // ЗАКРИВАЄМО
+            closing = true;
+
+            const borders = block.offsetHeight - block.clientHeight;
+            const endH = summary.offsetHeight + borders;
+
+            run(startH, endH, 1, 0, () => {
+                block.open = false;
+                block.style.overflow = "";
+                closing = false;
+            });
+
+        } else {
+
+            // ВІДКРИВАЄМО
+            closing = false;
+            block.open = true;
+
+            block.style.height = "auto";
+            const endH = block.offsetHeight;
+            block.style.height = "";
+
+            run(startH, endH, 0, 1, () => {
+                block.style.overflow = "";
+            });
+
+        }
+
+    });
+
+});
