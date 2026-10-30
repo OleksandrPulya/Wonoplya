@@ -1147,3 +1147,96 @@ footer small {
     }
 
 }
+
+/* =========================
+   PURPLE BUTTON OUTLINE
+========================= */
+
+:root {
+    --purple: #a78bfa;
+    --purple-glow: rgba(167, 139, 250, .45);
+}
+
+.telegram-button,
+.main-button,
+.secondary-button,
+.profile-button,
+.menu-button {
+    border: 1.5px solid var(--purple);
+    box-shadow:
+        0 0 0 4px rgba(167, 139, 250, .12),
+        0 0 18px var(--purple-glow);
+}
+
+/* кнопка в хедері була inline, через це не працював transform на hover */
+.telegram-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.menu-button {
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+/* контур на hover стає яскравішим */
+.telegram-button:hover,
+.main-button:hover,
+.secondary-button:hover,
+.profile-button:hover,
+.menu-button:hover {
+    border-color: #ddd6fe;
+    box-shadow:
+        0 0 0 5px rgba(167, 139, 250, .2),
+        0 0 35px rgba(167, 139, 250, .65);
+}
+
+
+/* =========================
+   BUTTON ENTRANCE ANIMATION
+========================= */
+
+@keyframes buttonIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.9);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.03);
+        border-color: #ddd6fe;
+        box-shadow:
+            0 0 0 8px rgba(167, 139, 250, .1),
+            0 0 45px rgba(167, 139, 250, .7);
+    }
+    /* кінцевий стан — звичайні стилі кнопки */
+}
+
+/* fill-mode "backwards" — щоб після анімації hover працював нормально */
+.telegram-button,
+.menu-button,
+.hero-buttons > a,
+.join-section.visible .main-button,
+.admin-card.visible .profile-button {
+    animation: buttonIn .9s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+
+/* по черзі */
+.telegram-button           { animation-delay: .2s; }
+.menu-button               { animation-delay: .2s; }
+.hero-buttons > a:nth-child(1) { animation-delay: .6s; }
+.hero-buttons > a:nth-child(2) { animation-delay: .85s; }
+.join-section.visible .main-button { animation-delay: .3s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .telegram-button,
+    .menu-button,
+    .hero-buttons > a,
+    .join-section.visible .main-button,
+    .admin-card.visible .profile-button {
+        animation: none;
+    }
+}
