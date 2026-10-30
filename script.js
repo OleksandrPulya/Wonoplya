@@ -247,3 +247,62 @@ if (home) {
         { rootMargin: "-45% 0px -50% 0px" }
     ).observe(home);
 }
+
+// ================================
+// ЗБЕРЕЖЕННЯ ПОЗИЦІЇ СКРОЛУ ПРИ ОНОВЛЕННІ
+// ================================
+
+(function () {
+
+    const KEY = "wonoplya-scroll-y";
+    let ready = false; // не зберігаємо, поки не відновили позицію
+    let ticking = false;
+
+    // вимикаємо "кривe" авто-відновлення браузера, робимо своє
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+
+    function save() {
+        if (!ready) return;
+        try {
+            sessionStorage.setItem(KEY, String(Math.round(window.scrollY)));
+        } catch (e) {}
+    }
+
+    function restore() {
+        let y = 0;
+        try {
+            y = parseInt(sessionStorage.getItem(KEY), 10) || 0;
+        } catch (e) {}
+
+        if (y > 0) {
+            // "instant" — без плавної прокрутки зверху вниз
+            window.scrollTo({ top: y, left: 0, behavior: "instant" });
+        }
+    }
+
+    // зберігаємо під час скролу (через rAF, щоб не навантажувати)
+    window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            save();
+            ticking = false;
+        });
+    }, { passive: true });
+
+    // і перед закриттям/оновленням сторінки
+    window.addEventListener("pagehide", save);
+    window.addEventListener("beforeunload", save);
+
+    // відновлюємо одразу, а потім ще раз після повного завантаження
+    // (шрифти й стилі можуть змінити висоту сторінки)
+    restore();
+
+    window.addEventListener("load", () => {
+        restore();
+        ready = true;
+    });
+
+})();
