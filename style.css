@@ -1240,3 +1240,126 @@ footer small {
         animation: none;
     }
 }
+
+/* =========================
+   PURPLE OUTLINE: CARDS
+========================= */
+
+.badge,
+.about-card,
+.telegram-preview,
+.rule-block,
+.rule-block.danger {
+    border: 1.5px solid var(--purple, #a78bfa);
+    box-shadow:
+        0 0 0 4px rgba(167, 139, 250, .08),
+        0 0 18px rgba(167, 139, 250, .3);
+}
+
+/* telegram-preview мав свою тінь — повертаємо її разом із контуром */
+.telegram-preview {
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, .5),
+        0 0 0 4px rgba(167, 139, 250, .08),
+        0 0 40px rgba(167, 139, 250, .3);
+}
+
+.about-card:hover,
+.rule-block:hover {
+    border-color: #ddd6fe;
+    box-shadow:
+        0 0 0 5px rgba(167, 139, 250, .15),
+        0 0 35px rgba(167, 139, 250, .5);
+}
+
+.rule-block[open],
+.rule-block.danger[open] {
+    border-color: #ddd6fe;
+}
+
+/* червоним залишаємо тільки номер у блоці «Заборонено» */
+.rule-block.danger .rule-number {
+    background: rgba(239, 68, 68, .1);
+    color: #f87171;
+}
+
+
+/* =========================
+   OUTLINE ENTRANCE ANIMATION
+========================= */
+
+@keyframes outlineIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: #ddd6fe;
+        box-shadow:
+            0 0 0 8px rgba(167, 139, 250, .1),
+            0 0 50px rgba(167, 139, 250, .65);
+    }
+    /* кінець — звичайні стилі елемента */
+}
+
+/* картка Telegram має нахил 2deg, тому окрема анімація */
+@keyframes previewIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotate(2deg) scale(.94);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: #ddd6fe;
+        box-shadow:
+            0 30px 100px rgba(0, 0, 0, .5),
+            0 0 0 10px rgba(167, 139, 250, .1),
+            0 0 70px rgba(167, 139, 250, .65);
+    }
+}
+
+/* на екрані одразу: бейдж і картка Telegram */
+.badge {
+    animation: outlineIn 1s cubic-bezier(.22, 1, .36, 1) .1s backwards;
+}
+
+.telegram-preview {
+    animation: previewIn 1.2s cubic-bezier(.22, 1, .36, 1) .5s backwards;
+}
+
+/* при скролі: ховаємо до появи, потім запускаємо анімацію */
+.about-card.reveal:not(.visible),
+.rule-block.reveal:not(.visible) {
+    opacity: 0;
+}
+
+.about-card.visible,
+.rule-block.visible {
+    animation: outlineIn 1s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+
+.about-card:nth-child(2).visible { animation-delay: .15s; }
+.about-card:nth-child(3).visible { animation-delay: .3s; }
+
+
+/* =========================
+   RULES: SLOW EXPAND
+========================= */
+
+.rule-block summary b {
+    transition: transform .8s cubic-bezier(.22, 1, .36, 1), color .8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge,
+    .telegram-preview,
+    .about-card.visible,
+    .rule-block.visible {
+        animation: none;
+    }
+}
