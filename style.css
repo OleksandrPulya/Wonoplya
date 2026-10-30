@@ -1593,3 +1593,127 @@ footer small {
         animation: none;
     }
 }
+
+/* =========================
+   HEAD ADMIN: ЗОЛОТИЙ КОЛІР (override)
+========================= */
+
+:root {
+    --head-rgb: 245, 158, 11;     /* золотий / бурштиновий */
+    --head-light: #fcd34d;        /* світлий контур і текст */
+}
+
+.admin-card.head-admin {
+    border: 1.5px solid rgba(var(--head-rgb), .55);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--head-rgb), .14),
+            rgba(var(--head-rgb), .04)
+        );
+
+    box-shadow:
+        0 0 0 4px rgba(var(--head-rgb), .08),
+        0 0 30px rgba(var(--head-rgb), .22);
+}
+
+.admin-card.head-admin:hover {
+    border-color: var(--head-light);
+    box-shadow:
+        0 0 0 5px rgba(var(--head-rgb), .14),
+        0 0 44px rgba(var(--head-rgb), .38);
+}
+
+/* стрічка зверху */
+.head-ribbon {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: #1c1305;
+}
+
+/* аватар */
+.admin-card.head-admin .admin-avatar {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    box-shadow: 0 0 24px rgba(var(--head-rgb), .4);
+}
+
+/* статус HEAD ADMIN */
+.admin-card.head-admin .admin-status {
+    color: var(--head-light);
+}
+
+.admin-card.head-admin .admin-status span {
+    background: var(--head-light);
+    box-shadow: 0 0 10px var(--head-light);
+}
+
+/* позивний і теги */
+.admin-card.head-admin .callsign strong {
+    color: var(--head-light);
+}
+
+.admin-card.head-admin .admin-tags span:first-child {
+    background: rgba(var(--head-rgb), .18);
+    color: #fde68a;
+}
+
+/* кнопка профілю */
+.admin-card.head-admin .profile-button {
+    border-color: rgba(var(--head-rgb), .7);
+    background: rgba(var(--head-rgb), .12);
+    color: #fde68a;
+    box-shadow:
+        0 0 0 4px rgba(var(--head-rgb), .08),
+        0 0 16px rgba(var(--head-rgb), .22);
+}
+
+.admin-card.head-admin .profile-button:hover {
+    border-color: var(--head-light);
+    background: rgba(var(--head-rgb), .24);
+    box-shadow:
+        0 0 0 5px rgba(var(--head-rgb), .14),
+        0 0 28px rgba(var(--head-rgb), .4);
+}
+
+/* анімація появи (золотий спалах замість фіолетового) */
+@keyframes headIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: var(--head-light);
+        box-shadow:
+            0 0 0 8px rgba(var(--head-rgb), .1),
+            0 0 50px rgba(var(--head-rgb), .45);
+    }
+}
+
+/* пульсація свічіння */
+@keyframes headPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 0 4px rgba(var(--head-rgb), .08),
+            0 0 26px rgba(var(--head-rgb), .2);
+    }
+    50% {
+        box-shadow:
+            0 0 0 6px rgba(var(--head-rgb), .12),
+            0 0 42px rgba(var(--head-rgb), .36);
+    }
+}
+
+.admin-card.head-admin.visible {
+    animation:
+        headIn 1s cubic-bezier(.22, 1, .36, 1) backwards,
+        headPulse 3.5s ease-in-out 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-card.head-admin.visible {
+        animation: none;
+    }
+}
