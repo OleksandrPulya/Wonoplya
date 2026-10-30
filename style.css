@@ -1878,3 +1878,188 @@ footer small {
     }
 
 }
+
+/* =========================
+   ІЄРАРХІЯ: ВЛАСНИК > ГОЛОВНИЙ АДМІН > АДМІНИ
+========================= */
+
+:root {
+    --owner-rgb: 236, 72, 153;     /* яскраво-рожевий */
+    --owner-light: #f9a8d4;
+}
+
+/* ---------- ВЛАСНИК: найсильніше виділення ---------- */
+
+.admin-card.owner {
+    border: 2px solid var(--owner-light);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--owner-rgb), .26),
+            rgba(var(--glow-rgb), .14)
+        );
+
+    box-shadow:
+        0 0 0 5px rgba(var(--owner-rgb), .14),
+        0 0 60px rgba(var(--owner-rgb), .5),
+        0 0 110px rgba(var(--glow-rgb), .3);
+}
+
+.admin-card.owner:hover {
+    border-color: #fff;
+    box-shadow:
+        0 0 0 6px rgba(var(--owner-rgb), .2),
+        0 0 75px rgba(var(--owner-rgb), .65),
+        0 0 130px rgba(var(--glow-rgb), .4);
+}
+
+.owner-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 7px 24px;
+
+    border-radius: 0 0 14px 14px;
+
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    box-shadow: 0 6px 24px rgba(var(--owner-rgb), .55);
+}
+
+.admin-card.owner .admin-top {
+    margin-top: 18px;
+}
+
+.admin-card.owner .admin-avatar {
+    box-shadow:
+        0 0 0 3px var(--owner-light),
+        0 0 30px rgba(var(--owner-rgb), .6);
+}
+
+.admin-card.owner .admin-status {
+    color: var(--owner-light);
+}
+
+.admin-card.owner .admin-status span {
+    background: var(--owner-light);
+    box-shadow: 0 0 12px var(--owner-light);
+}
+
+.admin-card.owner .callsign strong {
+    color: var(--owner-light);
+}
+
+.admin-card.owner .admin-tags span {
+    background: rgba(var(--owner-rgb), .2);
+    color: #fbcfe8;
+}
+
+@keyframes ownerIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+        border-color: transparent;
+        box-shadow: 0 0 0 0 transparent;
+    }
+    60% {
+        opacity: 1;
+        border-color: #fff;
+        box-shadow:
+            0 0 0 9px rgba(var(--owner-rgb), .16),
+            0 0 80px rgba(var(--owner-rgb), .7);
+    }
+}
+
+@keyframes ownerPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 0 5px rgba(var(--owner-rgb), .14),
+            0 0 55px rgba(var(--owner-rgb), .42),
+            0 0 100px rgba(var(--glow-rgb), .25);
+    }
+    50% {
+        box-shadow:
+            0 0 0 7px rgba(var(--owner-rgb), .2),
+            0 0 75px rgba(var(--owner-rgb), .62),
+            0 0 130px rgba(var(--glow-rgb), .36);
+    }
+}
+
+.admin-card.owner.visible {
+    animation:
+        ownerIn 1.1s cubic-bezier(.22, 1, .36, 1) backwards,
+        ownerPulse 3s ease-in-out 1.2s infinite;
+}
+
+
+/* ---------- ГОЛОВНИЙ АДМІН: слабше за власника ---------- */
+
+.admin-card.head-admin {
+    border: 1.5px solid rgba(var(--head-rgb), .45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--head-rgb), .1),
+            rgba(var(--head-rgb), .03)
+        );
+
+    box-shadow:
+        0 0 0 3px rgba(var(--head-rgb), .06),
+        0 0 20px rgba(var(--head-rgb), .15);
+}
+
+.admin-card.head-admin:hover {
+    border-color: var(--head-light);
+    box-shadow:
+        0 0 0 4px rgba(var(--head-rgb), .1),
+        0 0 30px rgba(var(--head-rgb), .26);
+}
+
+/* стрічка менша, ніж у власника */
+.head-ribbon {
+    padding: 4px 13px;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    box-shadow: none;
+}
+
+.admin-card.head-admin .admin-avatar {
+    box-shadow: 0 0 16px rgba(var(--head-rgb), .28);
+}
+
+/* без пульсації: тільки анімація появи */
+.admin-card.head-admin.visible {
+    animation: headIn 1s cubic-bezier(.22, 1, .36, 1) backwards;
+}
+
+.admin-card.head-admin .profile-button {
+    box-shadow:
+        0 0 0 3px rgba(var(--head-rgb), .06),
+        0 0 12px rgba(var(--head-rgb), .16);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-card.owner.visible,
+    .admin-card.head-admin.visible {
+        animation: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .owner-ribbon {
+        font-size: 11px;
+        padding: 6px 18px;
+    }
+}
