@@ -1878,3 +1878,53 @@ footer small {
     }
 
 }
+
+/* =========================
+   HEAD ADMIN (Поліна): простий золотий акцент
+========================= */
+
+.admin-card.head-admin {
+    border-color: rgba(245, 158, 11, .6);
+    box-shadow: 0 0 22px rgba(245, 158, 11, .14);
+}
+
+.admin-card.head-admin:hover {
+    border-color: #fbbf24;
+    box-shadow: 0 0 30px rgba(245, 158, 11, .25);
+}
+
+.admin-card.head-admin .admin-avatar {
+    background: linear-gradient(135deg, #b45309, #f59e0b);
+    box-shadow: 0 10px 30px rgba(245, 158, 11, .25);
+}
+
+.admin-card.head-admin .admin-status {
+    color: #fcd34d;
+}
+
+.admin-card.head-admin .admin-status span {
+    background: #fcd34d;
+    box-shadow: 0 0 10px #fcd34d;
+}
+
+.admin-card.head-admin .callsign strong {
+    color: #fcd34d;
+}
+
+.admin-card.head-admin .admin-tags span:first-child {
+    background: rgba(245, 158, 11, .15);
+    color: #fde68a;
+}
+
+.admin-card.head-admin .profile-button {
+    border-color: rgba(245, 158, 11, .65);
+    background: rgba(245, 158, 11, .1);
+    color: #fde68a;
+    box-shadow: 0 0 14px rgba(245, 158, 11, .18);
+}
+
+.admin-card.head-admin .profile-button:hover {
+    border-color: #fbbf24;
+    background: rgba(245, 158, 11, .2);
+    box-shadow: 0 0 26px rgba(245, 158, 11, .35);
+}
