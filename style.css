@@ -1928,3 +1928,54 @@ footer small {
     background: rgba(245, 158, 11, .2);
     box-shadow: 0 0 26px rgba(245, 158, 11, .35);
 }
+
+/* =========================
+   OWNER (Ріта): пульсація + рожевий текст
+========================= */
+
+/* пульсація свічіння */
+@keyframes ownerPulse {
+    0%, 100% {
+        border-color: rgba(236, 72, 153, .45);
+        box-shadow:
+            0 0 0 3px rgba(236, 72, 153, .08),
+            0 0 22px rgba(236, 72, 153, .2);
+    }
+    50% {
+        border-color: rgba(244, 114, 182, .85);
+        box-shadow:
+            0 0 0 6px rgba(236, 72, 153, .14),
+            0 0 46px rgba(236, 72, 153, .45);
+    }
+}
+
+.admin-card.owner {
+    animation: ownerPulse 3.5s ease-in-out infinite;
+}
+
+/* рожевий текст: OWNER, «Рижа», 👑 Власник */
+.admin-card.owner .admin-status {
+    color: #f472b6;
+}
+
+.admin-card.owner .admin-status span {
+    background: #f472b6;
+    box-shadow: 0 0 10px #f472b6;
+}
+
+.admin-card.owner .callsign strong {
+    color: #f472b6;
+}
+
+.admin-card.owner .admin-tags span:first-child {
+    background: rgba(236, 72, 153, .16);
+    color: #f472b6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-card.owner {
+        animation: none;
+        border-color: rgba(236, 72, 153, .5);
+        box-shadow: 0 0 24px rgba(236, 72, 153, .22);
+    }
+}
