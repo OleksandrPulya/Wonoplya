@@ -306,3 +306,37 @@ if (home) {
     });
 
 })();
+
+// ================================
+// АНІМАЦІЯ БУРГЕРА (☰ → ✕)
+// ================================
+
+(function () {
+
+    const btn = document.getElementById("menuButton");
+    const menu = document.getElementById("mobileMenu");
+
+    if (!btn || !menu) return;
+
+    function sync() {
+        const isOpen = menu.classList.contains("active");
+        btn.classList.toggle("open", isOpen);
+        btn.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    // цей слухач додано після основного, тому клас "active" уже оновлено
+    btn.addEventListener("click", sync);
+
+    menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", sync);
+    });
+
+    // якщо вікно розтягнули до десктопу, закриваємо меню
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            menu.classList.remove("active");
+            sync();
+        }
+    });
+
+})();
